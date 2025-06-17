@@ -7,8 +7,8 @@
 
 			embeddedservice_bootstrap.init(
 				'00DAY000008Qoz3',
-				'KalitiChatbot_EmbeddedDeployment',
-				'https://kalitisolutions--portaldev.sandbox.my.site.com/ESWKalitiChatbotEmbedded1744729782883',
+				'Test_webchat_github',
+				'https://kalitisolutions--portaldev.sandbox.my.site.com/ESWTestwebchatgithub1750167782070',
 				{
 					scrt2URL: 'https://kalitisolutions--portaldev.sandbox.my.salesforce-scrt.com'
 				}
@@ -18,7 +18,8 @@
 		}
 	};
 </script>
-<script type='text/javascript' src='https://kalitisolutions--portaldev.sandbox.my.site.com/ESWKalitiChatbotEmbedded1744729782883/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+<script type='text/javascript' src='https://kalitisolutions--portaldev.sandbox.my.site.com/ESWTestwebchatgithub1750167782070/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
 
 
 </body>
