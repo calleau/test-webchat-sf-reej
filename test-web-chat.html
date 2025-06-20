@@ -5,10 +5,6 @@
 		try {
 			embeddedservice_bootstrap.settings.language = 'fr'; // For example, enter 'en' or 'en-US'
 
-			embeddedservice_bootstrap.settings.prepopulatedPrechatFields = {
-			    UserEmail: 'calleau@reej-consulting.com'
-			};
-
 			embeddedservice_bootstrap.init(
 				'00DAY000008Qoz3',
 				'Test_webchat_github',
@@ -17,6 +13,11 @@
 					scrt2URL: 'https://kalitisolutions--portaldev.sandbox.my.salesforce-scrt.com'
 				}
 			);
+
+			window.addEventListener("onEmbeddedMessagingReady", () => {            
+				console.log( "Inside Prechat API!!" );
+				embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields( { "UserEmail": 'calleau@reej-consulting.com' } );
+			});
 		} catch (err) {
 			console.error('Error loading Embedded Messaging: ', err);
 		}
