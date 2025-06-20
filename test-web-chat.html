@@ -3,6 +3,7 @@
 <script type='text/javascript'>
 	function initEmbeddedMessaging() {
 		try {
+			let userEmail = 'calleau@reej-consulting.com'
 			embeddedservice_bootstrap.settings.language = 'fr'; // For example, enter 'en' or 'en-US'
 
 			embeddedservice_bootstrap.init(
@@ -16,7 +17,7 @@
 
 			window.addEventListener("onEmbeddedMessagingReady", () => {            
 				console.log( "Inside Prechat API!!" );
-				embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields( { "UserEmail": 'calleau@reej-consulting.com' } );
+				embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields( { "UserEmail": userEmail } );
 			});
 		} catch (err) {
 			console.error('Error loading Embedded Messaging: ', err);
