@@ -13,6 +13,10 @@
 					scrt2URL: 'https://kalitisolutions--portaldev.sandbox.my.salesforce-scrt.com'
 				}
 			);
+
+			embedded_svc.settings.prepopulatedPrechatFields = {
+			    UserEmail: 'calleau@reej-consulting.com'
+			};
 		} catch (err) {
 			console.error('Error loading Embedded Messaging: ', err);
 		}
