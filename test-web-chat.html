@@ -16,7 +16,7 @@
 			);
 
 			window.addEventListener("onEmbeddedMessagingReady", () => {            
-				console.log( "Inside Prechat API!!" );
+				console.log( "onEmbeddedMessagingReady - userEmail : ", userEmail );
 				embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields( { "UserEmail": userEmail } );
 			});
 		} catch (err) {
