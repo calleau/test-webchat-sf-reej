@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+ function timestamp() {
+   var response = document.getElementById("g-recaptcha-response");
+   if (response == null || response.value.trim() == "") {
+     var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);
+     elems["ts"] = JSON.stringify(new Date().getTime());
+     document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems);
+   }
+ }
+ setInterval(timestamp, 500);
+</script>
+
+
+
+
+  <title>Contact – Festilight</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    form {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 40px;
+      width: 100%;
+      max-width: 550px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+      color: #333;
+    }
+    label {
+      font-weight: bold;
+      margin-top: 18px;
+      display: block;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+    input[type="submit"] {
+      background-color: #F5A623;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 25px;
+      font-size: 17px;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+    }
+    input[type="submit"]:hover {
+      background-color: #d87c15;
+    }
+    .demand-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+    .demand-buttons button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 14px;
+      font-size: 15px;
+      background-color: #f9f9f9;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .demand-buttons button:hover {
+      background-color: #f0f0f0;
+      border-color: #F5A623;
+    }
+    .demand-buttons button.selected {
+      background-color: #F5A623;
+      color: white;
+      font-weight: bold;
+      border-color: #F5A623;
+    }
+    .hidden {
+      display: none;
+   }
+
+  input[type="checkbox"] {
+    width: auto;
+  }
+
+  </style>
+</head>
+<body>
+  <form action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DDO0000008iKK" method="POST">
+    <input type="hidden" name="oid" value="00DDO0000008iKK">
+    <input type="hidden" name="retURL" value="https://www.festilight.com/">
+    <input type="hidden" name="contact_fr" value="1">
+    <input type="hidden" name="LeadSource" value="Site internet">
+
+    <!-- Champs cachés -->
+    <input type="hidden" id="Decorer_animer_collectivite__c" name="Decorer_animer_collectivite__c" value="0">
+    <input type="hidden" id="Decorer_animer_commercial__c" name="Decorer_animer_commercial__c" value="0">
+    <input type="hidden" id="elaborer_visual_merchandising__c" name="elaborer_visual_merchandising__c" value="0">
+    <input type="hidden" id="Distribuer_produits_festilight__c" name="Distribuer_produits_festilight__c" value="0">
+    <input type="hidden" id="SAV__c" name="SAV__c" value="0">
+    <input type="hidden" id="Solution_Animation__c" name="Solution_Animation__c" value="0">
+    <input type="hidden" id="Autre_demande__c" name="Autre_demande__c" value="0">
+
+    <h1>Contactez-nous</h1>
+
+    <div class="demand-buttons">
+      <button type="button" onclick="selectDemand(this, 'Decorer_animer_collectivite__c')">Décorer, animer ma commune</button>
+      <button type="button" onclick="selectDemand(this, 'Decorer_animer_commercial__c')">Décorer, animer mon espace commercial</button>
+      <button type="button" onclick="selectDemand(this, 'elaborer_visual_merchandising__c')">Visual merchandising</button>
+      <button type="button" onclick="selectDemand(this, 'Distribuer_produits_festilight__c')">Distribuer les produits Festilight</button>
+      <button type="button" onclick="selectDemand(this, 'SAV__c')">Service après-vente</button>
+      <button type="button" onclick="selectDemand(this, 'Solution_Animation__c')">Jeu interactif – Le Défi de Noël®</button>
+      <button type="button" onclick="selectDemand(this, 'Autre_demande__c')">Autre demande</button>
+    </div>
+
+    <label for="salutation">Civilité</label>
+    <select id="salutation" name="salutation">
+      <option value="">--Aucune--</option>
+      <option value="Mr.">Monsieur</option>
+      <option value="Mrs.">Madame</option>
+    </select>
+
+    <label for="first_name">Prénom</label>
+    <input id="first_name" name="first_name" type="text" required>
+
+    <label for="last_name">Nom</label>
+    <input id="last_name" name="last_name" type="text" required>
+
+    <div id="position_block">
+      <label for="title">Poste</label>
+      <input id="title" name="title" type="text">
+    </div>
+
+    <div id="company_block" class="hidden">
+      <label for="company">Société / Organisation</label>
+      <input id="company" name="company" type="text">
+    </div>
+
+    <div id="represent_block" class="hidden"></div>
+
+    <div id="distributeurType" class="hidden">
+      <label for="00N7x00000INjLR">Type de distributeur</label>
+      <select id="00N7x00000INjLR" name="00N7x00000INjLR">
+        <option value="">--Aucun--</option>
+        <option value="Distributeur pros">Distributeur pros</option>
+        <option value="Distributeur grand public">Distributeur grand public</option>
+      </select>
+    </div>
+
+    <label for="country">Pays</label>
+    <select id="country" name="country" required>
+      <option value="">-- Sélectionner --</option>
+      <option value="France">France</option>
+      <option value="Belgium">Belgique</option>
+      <option value="Switzerland">Suisse</option>
+      <option value="Luxembourg">Luxembourg</option>
+      <option value="Other">Autre</option>
+    </select>
+
+    <label for="city">Ville</label>
+    <input id="city" name="city" type="text" required>
+
+    <label for="zip">Code postal</label>
+    <input id="zip" name="zip" type="text" required>
+
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required>
+
+    <label for="phone">Téléphone</label>
+    <input id="phone" name="phone" type="tel" required>
+
+<input type="hidden" name="lead_source" value="Demande entrante WEB" />
+
+
+<!-- Champ message libre -->
+<label for="message">Message</label>
+<textarea id="message" name="Message__c" rows="5" placeholder="Votre message..."></textarea>
+
+<!-- Cases à cocher RGPD parfaitement collées au texte -->
+<div style="display: flex; align-items: center; margin-top: 15px;">
+ <input  id="00N7x00000NXfWz" name="00N7x00000NXfWz" type="checkbox" value="1" required style="margin-right:4px;">
+  <label for="RGPD_consent__c" style="display: inline; margin: 0;">J’accepte que mes données soient utilisées pour traiter ma demande conformément à la politique de confidentialité.</label>
+</div>
+
+<div style="display: flex; align-items: center; margin-top: 8px;">
+  <input  id="00N7x00000NXVZF" name="00N7x00000NXVZF" type="checkbox" value="1" style="margin-right:4px;">
+  <label for="RGPD_newsletter__c" style="display: inline; margin: 0;">Je souhaite recevoir la newsletter de Festilight.</label>
+</div>
+
+<div style="display: flex; align-items: center; margin-top: 8px;">
+  <input  id="00N7x00000NXV9R" name="00N7x00000NXV9R" type="checkbox" value="1" name="RGPD_offres__c" style="margin-right:4px;">
+  <label for="RGPD_offres__c" style="display: inline; margin: 0;">Je souhaite recevoir les offres commerciales et promotions de Festilight.</label>
+</div>
+
+<!-- CAPTCHA Salesforce (reCAPTCHA v2) -->
+<input type="hidden" name="captcha_settings" value='{"keyname":"Festilight_3","fallback":"true","orgId":"00DDO0000008iKK","ts":""}'>
+<div class="g-recaptcha" data-sitekey="6LdYRqsrAAAAAHCz8DwH_E1PO3p-xh3IT-sZJ065"></div>
+<br>
+<input type="submit" value="Envoyer">
+
+
+
+  </form>
+
+  <script>
+    function selectDemand(button, fieldId) {
+      const allFields = [
+        'Decorer_animer_collectivite__c',
+        'Decorer_animer_commercial__c',
+        'elaborer_visual_merchandising__c',
+        'Distribuer_produits_festilight__c',
+        'SAV__c',
+        'Solution_Animation__c',
+        'Autre_demande__c'
+      ];
+      allFields.forEach(id => document.getElementById(id).value = '0');
+      document.getElementById(fieldId).value = '1';
+      document.querySelectorAll('.demand-buttons button').forEach(btn => btn.classList.remove('selected'));
+      button.classList.add('selected');
+
+      const showCompany = ['Decorer_animer_commercial__c', 'Distribuer_produits_festilight__c'].includes(fieldId);
+      const showPoste = fieldId !== 'SAV__c';
+      document.getElementById('company_block').style.display = showCompany ? 'block' : 'none';
+      document.getElementById('position_block').style.display = showPoste ? 'block' : 'none';
+
+      const representBlock = document.getElementById('represent_block');
+      if (["Decorer_animer_commercial__c", "Solution_Animation__c"].includes(fieldId)) {
+        let options = '';
+        if (fieldId === 'Decorer_animer_commercial__c') {
+          options = `
+            <option value="">-- Sélectionner --</option>
+            <option value="Une concession automobile">Une concession automobile</option>
+            <option value="Un espace de loisir">Un espace de loisir</option>
+            <option value="Un espace commercial">Un espace commercial</option>
+            <option value="Un hôtel ou un restaurant">Un hôtel ou un restaurant</option>
+            <option value="Autre">Autre</option>
+          `;
+        } else if (fieldId === 'Solution_Animation__c') {
+          options = `
+            <option value="">-- Sélectionner --</option>
+            <option value="Une commune">Une commune</option>
+            <option value="Un espace commercial">Un espace commercial</option>
+            <option value="Une association de commerçant">Une association de commerçant</option>
+            <option value="Un office de tourisme">Un office de tourisme</option>
+            <option value="Autre">Autre</option>
+          `;
+        }
+        representBlock.innerHTML = `
+          <label for="Je_represente__c">Je représente</label>
+          <select id="Je_represente__c" name="Je_represente__c">${options}</select>
+        `;
+        representBlock.style.display = 'block';
+      } else {
+        representBlock.innerHTML = '';
+        representBlock.style.display = 'none';
+      }
+
+      if (fieldId === 'Distribuer_produits_festilight__c') {
+        document.getElementById('distributeurType').style.display = 'block';
+      } else {
+        document.getElementById('distributeurType').style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
