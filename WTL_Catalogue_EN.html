@@ -1,10 +1,8 @@
-<!-- formulaire contact EN propre avec affichage dynamique -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Contact – Festilight</title>
+  <title>Request a catalogue - Festilight</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -20,38 +18,46 @@
       border-radius: 16px;
       padding: 40px;
       width: 100%;
-      max-width: 550px;
+      max-width: 500px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     }
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
+    form h1 {
       font-size: 28px;
       color: #333;
+      text-align: center;
+      margin-bottom: 30px;
     }
     label {
       font-weight: bold;
-      margin-top: 18px;
       display: block;
+      margin-top: 18px;
+      color: #444;
     }
     input, textarea, select {
       width: 100%;
       padding: 12px;
       margin-top: 6px;
-      border-radius: 8px;
       border: 1px solid #ccc;
+      border-radius: 8px;
       font-size: 15px;
+      transition: border-color 0.3s;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: #F5A623;
+      outline: none;
     }
     input[type="submit"] {
       background-color: #F5A623;
-      color: white;
+      color: #ffffff;
       font-weight: bold;
       cursor: pointer;
       margin-top: 25px;
-      font-size: 17px;
-      border: none;
       padding: 14px;
       border-radius: 8px;
+      width: 100%;
+      font-size: 17px;
+      border: none;
+      transition: background-color 0.3s;
     }
     input[type="submit"]:hover {
       background-color: #d87c15;
@@ -63,15 +69,16 @@
       margin-bottom: 25px;
     }
     .demand-buttons button {
+      text-align: center;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 14px;
-      font-size: 15px;
+      padding: 14px 20px;
       background-color: #f9f9f9;
       border: 2px solid #ddd;
       border-radius: 8px;
       cursor: pointer;
+      font-size: 15px;
       transition: all 0.3s;
     }
     .demand-buttons button:hover {
@@ -84,48 +91,41 @@
       font-weight: bold;
       border-color: #F5A623;
     }
-    .hidden {
+    .conditional {
       display: none;
     }
-
-input[type="checkbox"] {
-  width: auto;
-}
-
   </style>
 </head>
 <body>
   <form action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DDO0000008iKK" method="POST">
     <input type="hidden" name="oid" value="00DDO0000008iKK">
     <input type="hidden" name="retURL" value="https://www.festilight.com/">
-    <input type="hidden" name="contact_en" value="1">
+    <input type="hidden" name="LeadSource" value="Catalogue">
 
-    <!-- ✅ Champs cachés Salesforce corrects -->
-    <input type="hidden" id="Decorer_animer_collectivite_EN__c" name="Decorer_animer_collectivite_EN__c" value="0">
-    <input type="hidden" id="Decorer_animer_commercial_EN__c" name="Decorer_animer_commercial_EN__c" value="0">
-    <input type="hidden" id="Visual_merchandising_EN__c" name="Visual_merchandising_EN__c" value="0">
-    <input type="hidden" id="Distribuer_produits_Festilight_EN__c" name="Distribuer_produits_Festilight_EN__c" value="0">
-    <input type="hidden" id="SAV_EN__c" name="SAV_EN__c" value="0">
-    <input type="hidden" id="Solutions_animation_EN__c" name="Solutions_animation_EN__c" value="0">
-    <input type="hidden" id="Autre_demande_EN__c" name="Autre_demande_EN__c" value="0">
+    <!-- Hidden fields -->
+    <input type="hidden" id="Villes_et_villages_EN__c" name="Villes_et_villages_EN__c" value="0">
+    <input type="hidden" id="Espaces_commerciaux_EN__c" name="Espaces_commerciaux_EN__c" value="0">
+    <input type="hidden" id="Scenettes_festives_EN__c" name="Scenettes_festives_EN__c" value="0">
+    <input type="hidden" id="Visual_merchandising_Catalogue_EN__c" name="Visual_merchandising_Catalogue_EN__c" value="0">
+    <input type="hidden" id="Collection_sportive_EN__c" name="Collection_sportive_EN__c" value="0">
+    <input type="hidden" id="Collection_estivale_EN__c" name="Collection_estivale_EN__c" value="0">
 
-    <h1>Contact us</h1>
+    <h1>Request our catalogue</h1>
 
     <div class="demand-buttons">
-      <button type="button" onclick="selectDemand(this, 'Decorer_animer_collectivite_EN__c')">Decorate, animate my municipality</button>
-      <button type="button" onclick="selectDemand(this, 'Decorer_animer_commercial_EN__c')">Decorate, animate my commercial space</button>
-      <button type="button" onclick="selectDemand(this, 'Visual_merchandising_EN__c')">Visual merchandising</button>
-      <button type="button" onclick="selectDemand(this, 'Distribuer_produits_Festilight_EN__c')">Distribute Festilight products</button>
-      <button type="button" onclick="selectDemand(this, 'SAV_EN__c')">After-sales service</button>
-      <button type="button" onclick="selectDemand(this, 'Solutions_animation_EN__c')">Interactive game – Le Défi de Noël®</button>
-      <button type="button" onclick="selectDemand(this, 'Autre_demande_EN__c')">Other request</button>
+      <button type="button" onclick="selectDemand(this, 'Villes_et_villages_EN__c')">Towns and Villages</button>
+      <button type="button" onclick="selectDemand(this, 'Espaces_commerciaux_EN__c')">Commercial Spaces</button>
+      <button type="button" onclick="selectDemand(this, 'Scenettes_festives_EN__c')">Festive Scenography</button>
+      <button type="button" onclick="selectDemand(this, 'Visual_merchandising_Catalogue_EN__c')">Visual Merchandising</button>
+      <button type="button" onclick="selectDemand(this, 'Collection_sportive_EN__c')">Sporting Events</button>
+      <button type="button" onclick="selectDemand(this, 'Collection_estivale_EN__c')">Summer Range</button>
     </div>
 
     <label for="salutation">Salutation</label>
     <select id="salutation" name="salutation">
       <option value="">--None--</option>
       <option value="Mr.">Mr.</option>
-      <option value="Mrs.">Mrs.</option>
+      <option value="Ms.">Ms.</option>
     </select>
 
     <label for="first_name">First name</label>
@@ -134,41 +134,8 @@ input[type="checkbox"] {
     <label for="last_name">Last name</label>
     <input id="last_name" name="last_name" type="text" required>
 
-	<div id="position_block">
-  <label for="title">Your position</label>
-  <input id="title" name="title" type="text">
-</div>
-
-
-    <div id="company_block" class="hidden">
-      <label for="company">Company, Organization</label>
-      <input id="company" name="company" type="text">
-    </div>
-
-<div id="represent_block" class="hidden"></div>
-
-<div id="distributeurType" class="hidden">
-  <label for="00N7x00000NXxld">Distributor Type</label>
-  <select id="00N7x00000NXxld" name="00N7x00000NXxld" title="Distributor Type">
-    <option value="">--None--</option>
-    <option value="Professional Distributors">Professional Distributors</option>
-    <option value="Public Distributors">Public Distributors</option>
-  </select>
-</div>
-
-
-
-    <label for="country">Country</label>
-    <select id="country" name="country" required>
-      <option value="">-- Select --</option>
-      <option value="Belgium">Belgium</option>
-      <option value="Switzerland">Switzerland</option>
-      <option value="Luxembourg">Luxembourg</option>
-      <option value="Other">Other</option>
-    </select>
-
-    <label for="city">City</label>
-    <input id="city" name="city" type="text" required>
+    <label for="title">Your position</label>
+    <input id="title" name="title" type="text" required>
 
     <label for="email">Email</label>
     <input id="email" name="email" type="email" required>
@@ -179,102 +146,77 @@ input[type="checkbox"] {
 <input type="hidden" name="lead_source" value="Demande entrante WEB" />
 
 
-<!-- Free message field -->
-<label for="message">Message</label>
-<input  id="00N7x00000NXj8U" maxlength="255" name="00N7x00000NXj8U" rows="5" placeholder="Your message..."></textarea>
+    <label for="country">Country</label>
+    <select id="country" name="country" required>
+      <option value="">-- Select --</option>
+      <option value="Belgium">Belgium</option>
+      <option value="Switzerland">Switzerland</option>
+      <option value="Canada">Canada</option>
+      <option value="Other">Other</option>
+    </select>
 
-<!-- GDPR checkboxes -->
-<div style="display: flex; align-items: center; margin-top: 15px;">
- <input  id="00N7x00000NXfWz" name="00N7x00000NXfWz" type="checkbox" value="1" required style="margin-right:4px;">
-  <label for="RGPD_consent__c" style="display: inline; margin: 0;">I agree that my data may be used to process my request in accordance with the privacy policy.</label>
-</div>
+    <label for="city">City</label>
+    <input id="city" name="city" type="text" required>
 
-<div style="display: flex; align-items: center; margin-top: 8px;">
-  <input  id="00N7x00000NXVZF" name="00N7x00000NXVZF" type="checkbox" value="1" style="margin-right:4px;">
-  <label for="RGPD_newsletter__c" style="display: inline; margin: 0;">I would like to receive the Festilight newsletter.</label>
-</div>
+    <div id="field_represent" class="conditional">
+      <label for="I_represent__c">I represent</label>
+      <select id="I_represent__c" name="I_represent__c">
+        <option value="">-- Select --</option>
+        <option value="A commercial space">A commercial space</option>
+        <option value="A leisure space">A leisure space</option>
+        <option value="A hotel or restaurant">A hotel or restaurant</option>
+        <option value="A car dealership">A car dealership</option>
+        <option value="An installer">An installer</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
 
-<div style="display: flex; align-items: center; margin-top: 8px;">
-  <input  id="00N7x00000NXV9R" name="00N7x00000NXV9R" type="checkbox" value="1" name="RGPD_offres__c" style="margin-right:4px;">
-  <label for="RGPD_offres__c" style="display: inline; margin: 0;">I would like to receive Festilight's commercial offers and promotions.</label>
-</div>
+    <div id="field_info" class="conditional">
+      <label for="Raison_sociale__c">Company / Additional information</label>
+      <input id="Raison_sociale__c" name="Raison_sociale__c" type="text">
+    </div>
 
+    <label for="How_did_you_hear_about_us__c">How did you hear about us?</label>
+    <select id="How_did_you_hear_about_us__c" name="How_did_you_hear_about_us__c">
+      <option value="">-- Select --</option>
+      <option value="Google Search">Google Search</option>
+      <option value="Social Networks">Social Networks</option>
+      <option value="Catalogues or Brochures">Catalogues or Brochures</option>
+      <option value="Trade Shows or Events">Trade Shows or Events</option>
+      <option value="Word of Mouth">Word of Mouth</option>
+      <option value="Other">Other</option>
+    </select>
 
-
-
-    <input type="submit" value="Send">
+    <input type="submit" value="Submit">
   </form>
 
   <script>
-   function selectDemand(button, fieldId) {
-  const allFields = [
-    'Decorer_animer_collectivite_EN__c',
-    'Decorer_animer_commercial_EN__c',
-    'Visual_merchandising_EN__c',
-    'Distribuer_produits_Festilight_EN__c',
-    'SAV_EN__c',
-    'Solutions_animation_EN__c',
-    'Autre_demande_EN__c'
-  ];
-  allFields.forEach(id => {
-    const field = document.getElementById(id);
-    if (field) field.value = '0';
-  });
-  document.getElementById(fieldId).value = '1';
-  document.querySelectorAll('.demand-buttons button').forEach(btn => btn.classList.remove('selected'));
-  button.classList.add('selected');
+    function selectDemand(button, fieldId) {
+      const allFields = [
+        'Villes_et_villages_EN__c',
+        'Espaces_commerciaux_EN__c',
+        'Scenettes_festives_EN__c',
+        'Visual_merchandising_Catalogue_EN__c',
+        'Collection_sportive_EN__c',
+        'Collection_estivale_EN__c'
+      ];
+      allFields.forEach(id => document.getElementById(id).value = '0');
+      document.getElementById(fieldId).value = '1';
 
-  // Champs dynamiques
-  const showCompany = ['Decorer_animer_commercial_EN__c', 'Distribuer_produits_Festilight_EN__c'].includes(fieldId);
-  document.getElementById('company_block').style.display = showCompany ? 'block' : 'none';
-  const showPosition = fieldId !== 'SAV_EN__c';
-  document.getElementById('position_block').style.display = showPosition ? 'block' : 'none';
+      document.querySelectorAll('.demand-buttons button').forEach(btn => btn.classList.remove('selected'));
+      button.classList.add('selected');
 
-  const representBlock = document.getElementById('represent_block');
-  if (['Decorer_animer_commercial_EN__c', 'Solutions_animation_EN__c'].includes(fieldId)) {
-    let options = '';
+      const infoBlock = document.getElementById("field_info");
+      const representBlock = document.getElementById("field_represent");
 
-    if (fieldId === 'Decorer_animer_commercial_EN__c') {
-      options = `
-        <option value="">-- Select --</option>
-        <option value="A commercial space">A commercial space</option>
-        <option value="A theme park">A theme park</option>
-        <option value="A hotel or a restaurant">A hotel or a restaurant</option>
-        <option value="A car dealership">A car dealership</option>
-        <option value="Other">Other</option>
-      `;
+      if (["espaces_commerciaux_EN__c", "scenettes_festives_EN__c"].includes(fieldId)) {
+        infoBlock.style.display = "block";
+        representBlock.style.display = "block";
+      } else {
+        infoBlock.style.display = "none";
+        representBlock.style.display = "none";
+      }
     }
-
-    if (fieldId === 'Solutions_animation_EN__c') {
-      options = `
-        <option value="">-- Select --</option>
-        <option value="Municipality">Municipality</option>
-        <option value="Tourist office">Tourist office</option>
-        <option value="Merchant’s association">Merchant’s association</option>
-        <option value="Commercial space">Commercial space</option>
-        <option value="Other">Other</option>
-      `;
-    }
-
-    representBlock.innerHTML = `
-      <label for="I_represent__c">I represent</label>
-      <select id="I_represent__c" name="I_represent__c">${options}</select>
-    `;
-    representBlock.style.display = 'block';
-  } else {
-    representBlock.innerHTML = '';
-    representBlock.style.display = 'none';
-  }
-
-  // ✅ Correction : ce bloc doit être À L'INTÉRIEUR de la fonction
-// Show Distributor Type only if "Distribute Festilight Products" is selected
-if (fieldId === 'Distribuer_produits_Festilight_EN__c') {
-  document.getElementById('distributeurType').style.display = 'block';
-} else {
-  document.getElementById('distributeurType').style.display = 'none';
-}
-
-}
   </script>
 </body>
 </html>
