@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Recevez notre catalogue - Festilight</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    form {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 30px;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .catalogue-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+    .catalogue-buttons button {
+      padding: 12px;
+      text-align: center;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      background-color: #f9f9f9;
+    }
+    .catalogue-buttons button.selected {
+      background-color: #F5A623;
+      color: white;
+      border-color: #F5A623;
+    }
+    input[type="submit"] {
+      background-color: #F5A623;
+      color: white;
+      font-weight: bold;
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <form action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DDO0000008iKK" method="POST">
+    <input type="hidden" name="oid" value="00DDO0000008iKK">
+    <input type="hidden" name="retURL" value="https://www.festilight.com/">
+    <input type="hidden" name="lead_source" value="Catalogue">
+
+    <!-- Champs cachés -->
+    <input type="hidden" id="villes_villages__c" name="villes_villages__c" value="0">
+    <input type="hidden" id="espaces_commerciaux__c" name="espaces_commerciaux__c" value="0">
+    <input type="hidden" id="scenettes_festives__c" name="scenettes_festives__c" value="0">
+    <input type="hidden" id="visual_merchandising__c" name="visual_merchandising__c" value="0">
+    <input type="hidden" id="collection_sportive__c" name="collection_sportive__c" value="0">
+    <input type="hidden" id="collection_estivale__c" name="collection_estivale__c" value="0">
+
+    <h1>Recevez notre catalogue</h1>
+
+    <div class="catalogue-buttons">
+      <button type="button" onclick="selectForm(this, 'villes_villages__c')">Villes & Villages</button>
+      <button type="button" onclick="selectForm(this, 'espaces_commerciaux__c')">Espaces Commerciaux</button>
+      <button type="button" onclick="selectForm(this, 'scenettes_festives__c')">Scénettes Festives</button>
+      <button type="button" onclick="selectForm(this, 'visual_merchandising__c')">Visual Merchandising</button>
+      <button type="button" onclick="selectForm(this, 'collection_sportive__c')">Collection Sportive</button>
+      <button type="button" onclick="selectForm(this, 'collection_estivale__c')">Collection Estivale</button>
+    </div>
+
+    <label for="salutation">Civilité</label>
+    <select id="salutation" name="salutation" required>
+      <option value="">-- Sélectionner --</option>
+      <option value="M.">M.</option>
+      <option value="Mme">Mme</option>
+    </select>
+
+    <label for="first_name">Prénom</label>
+    <input id="first_name" name="first_name" type="text" required>
+
+    <label for="last_name">Nom</label>
+    <input id="last_name" name="last_name" type="text" required>
+
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required>
+
+    <label for="phone">Téléphone</label>
+    <input id="phone" name="phone" type="tel" required>
+
+    <label for="country">Pays</label>
+    <select id="country" name="country" required>
+      <option value="">-- Sélectionner --</option>
+      <option value="France">France</option>
+      <option value="Belgique">Belgique</option>
+      <option value="Suisse">Suisse</option>
+      <option value="Luxembourg">Luxembourg</option>
+      <option value="Autre">Autre</option>
+    </select>
+
+    <label for="city">Ville</label>
+    <input id="city" name="city" type="text" required>
+
+    <label for="zip">Code Postal</label>
+    <input id="zip" name="zip" type="text" required>
+
+<input type="hidden" name="lead_source" value="Demande entrante WEB" />
+
+
+    <div id="extraFields"></div>
+
+    <input type="submit" value="Envoyer">
+  </form>
+
+  <script>
+    function selectForm(button, fieldId) {
+      const fields = [
+        'villes_villages__c',
+        'espaces_commerciaux__c',
+        'scenettes_festives__c',
+        'visual_merchandising__c',
+        'collection_sportive__c',
+        'collection_estivale__c'
+      ];
+      fields.forEach(f => document.getElementById(f).value = '0');
+      document.getElementById(fieldId).value = '1';
+
+      document.querySelectorAll('.catalogue-buttons button').forEach(b => b.classList.remove('selected'));
+      button.classList.add('selected');
+
+      const extra = document.getElementById("extraFields");
+      extra.innerHTML = "";
+
+      if (['espaces_commerciaux__c', 'scenettes_festives__c'].includes(fieldId)) {
+        extra.innerHTML += `
+          <label for="00N7x00000HTxyz">Raison sociale </label>
+          <input id="00N7x00000HTxyz" name="00N7x00000HTxyz" type="text">
+
+          <label for="Je_represente__c">Je représente</label>
+          <select id="Je_represente__c" name="Je_represente__c">
+            <option value="">-- Sélectionner --</option>
+            <option value="Un espace commercial">Un espace commercial</option>
+            <option value="Un espace de loisir">Un espace de loisir</option>
+            <option value="Un hotel ou un restaurant">Un hotel ou un restaurant</option>
+            <option value="Une concession automobile">Une concession automobile</option>
+            <option value="Un installateur">Un installateur</option>
+            <option value="Autre">Autre</option>
+          </select>
+        `;
+      }
+
+      extra.innerHTML += `
+        <label for="Comment_nous_avez_vous_connu__c">Comment nous avez-vous connu ?</label>
+        <select id="Comment_nous_avez_vous_connu__c" name="Comment_nous_avez_vous_connu__c">
+          <option value="">-- Sélectionner --</option>
+          <option value="Recherche google">Recherche google</option>
+          <option value="Réseaux sociaux">Réseaux sociaux</option>
+          <option value="Catalogues ou brochure">Catalogues ou brochure</option>
+          <option value="Salons ou événements">Salons ou événements</option>
+          <option value="Bouche à oreille">Bouche à oreille</option>
+          <option value="Autre">Autre</option>
+        </select>
+      `;
+    }
+  </script>
+</body>
+</html>
