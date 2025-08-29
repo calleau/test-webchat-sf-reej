@@ -6,17 +6,8 @@
 <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
 <script src="https://www.google.com/recaptcha/api.js"></script>
 <script>
- function timestamp() {
-   var response = document.getElementById("g-recaptcha-response");
-   if (response == null || response.value.trim() == "") {
-     var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);
-     elems["ts"] = JSON.stringify(new Date().getTime());
-     document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems);
-   }
- }
- setInterval(timestamp, 500);
+ function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
 </script>
-
 
 
 
@@ -112,6 +103,7 @@
 </head>
 <body>
   <form action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DDO0000008iKK" method="POST">
+    <input type=hidden name='captcha_settings' value='{"keyname":"Festilight_3","fallback":"true","orgId":"00DDO0000008iKK","ts":""}'>
     <input type="hidden" name="oid" value="00DDO0000008iKK">
     <input type="hidden" name="retURL" value="https://www.festilight.com/">
     <input type="hidden" name="contact_fr" value="1">
@@ -217,9 +209,7 @@
   <label for="RGPD_offres__c" style="display: inline; margin: 0;">Je souhaite recevoir les offres commerciales et promotions de Festilight.</label>
 </div>
 
-<!-- CAPTCHA Salesforce (reCAPTCHA v2) -->
-<input type="hidden" name="captcha_settings" value='{"keyname":"Festilight_3","fallback":"true","orgId":"00DDO0000008iKK","ts":""}'>
-<div class="g-recaptcha" data-sitekey="6Ldex6MrAAAAAHihGEoxOLWbtgL-T6fcmj1lhtyA"></div>
+<div class="g-recaptcha" data-sitekey="6LdYRqsrAAAAAHCz8DwH_E1PO3p-xh3IT-sZJ065"></div><br>
 <br>
 <input type="submit" value="Envoyer">
 
