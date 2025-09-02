@@ -102,7 +102,7 @@
   </style>
 </head>
 <body>
-  <form action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DDO0000008iKK" method="POST">
+  <form action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DDO0000008iKK" method="POST" onsubmit="validateForm">
     <input type=hidden name='captcha_settings' value='{"keyname":"Festilight_3","fallback":"true","orgId":"00DDO0000008iKK","ts":""}'>
     <input type="hidden" name="oid" value="00DDO0000008iKK">
     <input type="hidden" name="retURL" value="https://www.festilight.com/">
@@ -218,6 +218,15 @@
   </form>
 
   <script>
+  function validateForm() {
+    var response = grecaptcha.getResponse();
+    if (response.length === 0) {
+      alert("Merci de valider le captcha avant d’envoyer le formulaire.");
+      return false;
+    }
+    return true;
+  }
+    
     function selectDemand(button, fieldId) {
       const allFields = [
         'Decorer_animer_collectivite__c',
