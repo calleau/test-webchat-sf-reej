@@ -222,6 +222,7 @@
     var response = grecaptcha.getResponse();
     if (response.length === 0) {
       alert("Merci de valider le captcha avant d’envoyer le formulaire.");
+      e.preventDefault();
       return false;
     }
     return true;
