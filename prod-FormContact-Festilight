@@ -1,0 +1,82 @@
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: Please add the following <META> element to your page <HEAD>.      -->
+<!--  If necessary, please modify the charset parameter to specify the        -->
+<!--  character set of your HTML page.                                        -->
+<!--  ----------------------------------------------------------------------  -->
+
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+ function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
+</script>
+
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: Please add the following <FORM> element to your page.             -->
+<!--  ----------------------------------------------------------------------  -->
+
+<form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DDp0000016id3" method="POST">
+
+<input type=hidden name='captcha_settings' value='{"keyname":"FestilightProd","fallback":"true","orgId":"00DDp0000016id3","ts":""}'>
+<input type=hidden name="oid" value="00DDp0000016id3">
+<input type=hidden name="retURL" value="http://">
+
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
+<!--  these lines if you wish to test in debug mode.                          -->
+<!--  <input type="hidden" name="debug" value=1>                              -->
+<!--  <input type="hidden" name="debugEmail"                                  -->
+<!--  value="integrateur+festilight@reej-consulting.com">                     -->
+<!--  ----------------------------------------------------------------------  -->
+
+Decorer_animer_collectivite:<input  id="00NUi00000Api1Y" name="00NUi00000Api1Y" type="checkbox" value="1" /><br>
+
+Decorer_animer_commercial:<input  id="00NUi00000Api1a" name="00NUi00000Api1a" type="checkbox" value="1" /><br>
+
+Visual Merchandising:<input  id="00NUi00000Api25" name="00NUi00000Api25" type="checkbox" value="1" /><br>
+
+Distribuer_produits_festilight:<input  id="00NUi00000Api1c" name="00NUi00000Api1c" type="checkbox" value="1" /><br>
+
+SAV:<input  id="00NUi00000Api1r" name="00NUi00000Api1r" type="checkbox" value="1" /><br>
+
+Solution_Animation:<input  id="00NUi00000Api1t" name="00NUi00000Api1t" type="checkbox" value="1" /><br>
+
+Autre demande:<input  id="00NUi00000Api1T" name="00NUi00000Api1T" type="checkbox" value="1" /><br>
+
+<label for="salutation">Salutation</label><select  id="salutation" name="salutation"><option value="">--None--</option><option value="M.">M.</option>
+<option value="Mme">Mme</option>
+</select><br>
+
+<label for="first_name">First Name</label><input  id="first_name" maxlength="40" name="first_name" size="20" type="text" /><br>
+
+<label for="last_name">Last Name</label><input  id="last_name" maxlength="80" name="last_name" size="20" type="text" /><br>
+
+<label for="title">Title</label><input  id="title" maxlength="40" name="title" size="20" type="text" /><br>
+
+<label for="company">Company</label><input  id="company" maxlength="40" name="company" size="20" type="text" /><br>
+
+Type de distributeur:<select  id="00NUi00000Api1v" name="00NUi00000Api1v" title="Type de distributeur"><option value="">--None--</option><option value="Distributeur pros">Distributeurs professionnels</option>
+<option value="Distributeur grand public">Distributeur grand public</option>
+</select><br>
+
+<label for="country">Country</label><input  id="country" maxlength="40" name="country" size="20" type="text" /><br>
+
+<label for="city">City</label><input  id="city" maxlength="40" name="city" size="20" type="text" /><br>
+
+<label for="zip">Zip</label><input  id="zip" maxlength="20" name="zip" size="20" type="text" /><br>
+
+<label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>
+
+<label for="phone">Phone</label><input  id="phone" maxlength="40" name="phone" size="20" type="text" /><br>
+
+Message:<input  id="00NUi00000Api1k" maxlength="255" name="00NUi00000Api1k" size="20" type="text" /><br>
+
+RGPD Consent:<input  id="00NUi00000Api1m" name="00NUi00000Api1m" type="checkbox" value="1" /><br>
+
+RGPD Newsletter:<input  id="00NUi00000Api1n" name="00NUi00000Api1n" type="checkbox" value="1" /><br>
+
+RGPD Offres:<input  id="00NUi00000Api1o" name="00NUi00000Api1o" type="checkbox" value="1" /><br>
+
+<div class="g-recaptcha" data-sitekey="6LeI4akrAAAAAPvqxpNxFjJVjA1CIkRu6Cf4iqA"></div><br>
+<input type="submit" name="submit">
+
+</form>
